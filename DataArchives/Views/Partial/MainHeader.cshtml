@@ -1,0 +1,68 @@
+﻿@model DataArchives.Models.ViewModel.MainHeaderV
+
+
+    @*<nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <div class="nav-item active">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </div>
+            <div class="nav-item ">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </div>
+            <div class="nav-item ">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+            </div>
+        </div>
+        </nav>*@
+
+            <div class="row no-gutters">
+                <ul class="nav nav-tabs main-header" role="tablist">
+
+                    @if (Model.Selected == "OwnDatas" || string.IsNullOrWhiteSpace(Model.Selected))
+                    {
+                    <li class="nav-item active col-sm-4">
+                        <a class="nav-link" id="OwnDatas-tab" data-toggle="tab" href="#OwnDatasBlock" role="tab" aria-controls="OwnDatasBlock" aria-selected="true">Данные</a>
+                        @*<a asp-controller="Archives" asp-action="OwnDatas">Собственные данные</a>*@
+                    </li>
+                    }
+                    else
+                    {
+                <li class="nav-item col-sm-4">
+                    @*<a asp-controller="Archives" asp-action="OwnDatas">Собственные данные</a>*@
+                    <a class="nav-link" id="OwnDatas-tab" data-toggle="tab" href="#OwnDatasBlock" role="tab" aria-controls="OwnDatasBlock" aria-selected="true">Данные</a>
+                </li>
+                    }
+                    @if (Model.Selected == "Search")
+                    {
+                <li class="nav-item active col-sm-4">
+                    <a class="nav-link" id="Search-tab" data-toggle="tab" href="#SearchBlock" role="tab" aria-controls="SearchBlock" aria-selected="true">Поиск</a>
+                    @*<a asp-controller="Archives" asp-action="Search">Поиск</a>*@
+                </li>
+                    }
+                    else
+                    {
+                <li class="nav-item col-sm-4">
+                    @*<a asp-controller="Archives" asp-action="Search">Поиск</a>*@
+                    <a class="nav-link" id="Search-tab" data-toggle="tab" href="#SearchBlock" role="tab" aria-controls="SearchBlock" aria-selected="true">Поиск</a>
+                </li>
+                    }
+                    @if (Model.Selected == "ForegnDatas")
+                    {
+                <li class="nav-item active col-sm-4">
+                    <a class="nav-link" id="ForegnDatas-tab" data-toggle="tab" href="#ForegnDatasBlock" role="tab" aria-controls="ForegnDatasBlock" aria-selected="true">Чужие данные</a>
+                    @*<a asp-controller="Archives" asp-action="ForegnDatas">Чужие данные</a>*@
+                </li>
+                    }
+                    else
+                    {
+                <li class="nav-item col-sm-4">
+                    <a class="nav-link" id="ForegnDatas-tab" data-toggle="tab" href="#ForegnDatasBlock" role="tab" aria-controls="ForegnDatasBlock" aria-selected="true">Чужие данные</a>
+
+                    @*<a asp-controller="Archives" asp-action="ForegnDatas">Чужие данные</a>*@
+                </li>
+                    }
+
+
+                </ul>
+            </div>
+

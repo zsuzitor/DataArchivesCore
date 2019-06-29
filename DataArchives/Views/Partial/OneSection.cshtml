@@ -1,0 +1,51 @@
+﻿@model DataArchives.Models.Domain.Section
+
+@{
+    string hideChilds = "style=\"display:none;\"";
+    if (Model.Sections.Count > 0)
+    {
+        hideChilds = "";
+    }
+}
+
+<div id="OneSectionFull_@Model.Id">
+    <div class="row">
+        <div onclick="clickForChilds('@Model.Id')" class="col-2">
+            @* кнопка для того что бы разворачивать секции *@
+
+            <div class="btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary bg-info active">
+                    <input type="checkbox" checked autocomplete="off"> @Model.Lvl
+                </label>
+            </div>
+
+        </div>
+
+        <div class="col-9">
+            @*заголовок секции, при нажатии открывается alert с содержимым*@
+            <div class="text-break">
+                @Model.Head
+            </div>
+        </div>
+        <div class="col-1">
+            @*кнопка которая будет вытаскивать остальные кнопки*@
+        </div>
+
+    </div>
+
+    <div id="OneSectionChilds_@Model.Id" @hideChilds>
+        <div id="OneSectionChildsSections_@Model.Id">
+            @foreach (var i in Model.Sections)
+            {
+                @await Html.PartialAsync("OneSection", i)
+            }
+            </div>
+        <div id="OneSectionChildsArticles_@Model.Id">
+            @foreach (var i in Model.Articles)
+            {
+                @await Html.PartialAsync("OneArticle", i)
+            }
+        </div>
+        </div>
+</div>
+
