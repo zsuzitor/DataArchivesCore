@@ -50,7 +50,7 @@
             "Microsoft.AspNetCore.Razor.Design": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.1.2, )"
+              "version": "[2.1.1, )"
             },
             "Microsoft.NETCore.App": {
               "target": "Package",
@@ -60,6 +60,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[2.1.9, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[4.3.1, )"
             }
           },
           "imports": [

@@ -28,7 +28,6 @@ E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\DataArchives.RazorTa
 E:\csharp\DataArchives\DataArchives\bin\Debug\netcoreapp2.1\DataArchives.pdb
 E:\csharp\DataArchives\DataArchives\bin\Debug\netcoreapp2.1\DataArchives.Views.dll
 E:\csharp\DataArchives\DataArchives\bin\Debug\netcoreapp2.1\DataArchives.Views.pdb
-E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\DataArchives.Views.pdb
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\DataArchives.dll
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\DataArchives.pdb
@@ -44,3 +43,4 @@ E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Partial\
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Partial\EmptyMainModal.g.cshtml.cs
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\Index.g.cshtml.cs
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\OwnDatas.g.cshtml.cs
+E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs

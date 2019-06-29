@@ -27,7 +27,7 @@ namespace DataArchives.Controllers
         {
            // this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             ArchiveIndexV res = new ArchiveIndexV();
-            res.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            res.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (res.UserId != null)
             {
                 ApplicationUser.GetMainSection(_db,res.UserId);
