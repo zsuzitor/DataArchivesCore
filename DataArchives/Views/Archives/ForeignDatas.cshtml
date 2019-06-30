@@ -1,0 +1,13 @@
+﻿@model DataArchives.Models.Domain.Section
+
+
+
+@if (Model == null)
+{
+    <h1>У вас нет доступа или пользователь не найден</h1>
+}
+else
+{
+    @await Html.PartialAsync("OneSection", Model)
+}
+

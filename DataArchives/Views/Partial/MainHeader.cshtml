@@ -15,54 +15,42 @@
         </div>
         </nav>*@
 
-            <div class="row no-gutters">
-                <ul class="nav nav-tabs main-header" role="tablist">
-
-                    @if (Model.Selected == "OwnDatas" || string.IsNullOrWhiteSpace(Model.Selected))
-                    {
-                    <li class="nav-item active col-sm-4">
-                        <a class="nav-link" id="OwnDatas-tab" data-toggle="tab" href="#OwnDatasBlock" role="tab" aria-controls="OwnDatasBlock" aria-selected="true">Данные</a>
-                        @*<a asp-controller="Archives" asp-action="OwnDatas">Собственные данные</a>*@
-                    </li>
-                    }
-                    else
-                    {
-                <li class="nav-item col-sm-4">
-                    @*<a asp-controller="Archives" asp-action="OwnDatas">Собственные данные</a>*@
+    <div class="">
+        @*onclick="mainHeaderChangeSel('OwnDatas')"*@
+        <ul class="nav nav-tabs main-header row no-gutters" role="tablist">
+            <li class="nav-item col-sm-4 col-3">
+                @if (Model.Selected == "OwnDatas" || string.IsNullOrWhiteSpace(Model.Selected))
+                {
+                    <a class="nav-link active" id="OwnDatas-tab" data-toggle="tab" href="#OwnDatasBlock" role="tab" aria-controls="OwnDatasBlock" aria-selected="true">Данные</a>
+                }
+                else
+                {
                     <a class="nav-link" id="OwnDatas-tab" data-toggle="tab" href="#OwnDatasBlock" role="tab" aria-controls="OwnDatasBlock" aria-selected="true">Данные</a>
-                </li>
-                    }
-                    @if (Model.Selected == "Search")
-                    {
-                <li class="nav-item active col-sm-4">
+                }
+            </li>
+            @*onclick="mainHeaderChangeSel('Search')"*@
+            <li class="nav-item col-sm-4 col-3">
+                @if (Model.Selected == "Search")
+                {
+                    <a class="nav-link active" id="Search-tab" data-toggle="tab" href="#SearchBlock" role="tab" aria-controls="SearchBlock" aria-selected="true">Поиск</a>
+                }
+                else
+                {
                     <a class="nav-link" id="Search-tab" data-toggle="tab" href="#SearchBlock" role="tab" aria-controls="SearchBlock" aria-selected="true">Поиск</a>
-                    @*<a asp-controller="Archives" asp-action="Search">Поиск</a>*@
-                </li>
-                    }
-                    else
-                    {
-                <li class="nav-item col-sm-4">
-                    @*<a asp-controller="Archives" asp-action="Search">Поиск</a>*@
-                    <a class="nav-link" id="Search-tab" data-toggle="tab" href="#SearchBlock" role="tab" aria-controls="SearchBlock" aria-selected="true">Поиск</a>
-                </li>
-                    }
-                    @if (Model.Selected == "ForegnDatas")
-                    {
-                <li class="nav-item active col-sm-4">
-                    <a class="nav-link" id="ForegnDatas-tab" data-toggle="tab" href="#ForegnDatasBlock" role="tab" aria-controls="ForegnDatasBlock" aria-selected="true">Чужие данные</a>
-                    @*<a asp-controller="Archives" asp-action="ForegnDatas">Чужие данные</a>*@
-                </li>
-                    }
-                    else
-                    {
-                <li class="nav-item col-sm-4">
-                    <a class="nav-link" id="ForegnDatas-tab" data-toggle="tab" href="#ForegnDatasBlock" role="tab" aria-controls="ForegnDatasBlock" aria-selected="true">Чужие данные</a>
+                }
+            </li>
+            @*onclick="mainHeaderChangeSel('ForeignDatas')"*@
+            <li class="nav-item col-sm-4 col-6">
+                @if (Model.Selected == "ForeignDatas")
+                {
+                    <a class="nav-link active" id="ForeignDatas-tab" data-toggle="tab" href="#ForeignDatasBlock" role="tab" aria-controls="ForeignDatasBlock" aria-selected="true">Чужие данные</a>
+                }
+                else
+                {
+                    <a class="nav-link" id="ForeignDatas-tab" data-toggle="tab" href="#ForeignDatasBlock" role="tab" aria-controls="ForeignDatasBlock" aria-selected="true">Чужие данные</a>
+                }
+            </li>
 
-                    @*<a asp-controller="Archives" asp-action="ForegnDatas">Чужие данные</a>*@
-                </li>
-                    }
-
-
-                </ul>
-            </div>
+        </ul>
+    </div>
 

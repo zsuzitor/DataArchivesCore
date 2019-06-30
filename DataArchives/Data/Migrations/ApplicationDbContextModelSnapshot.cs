@@ -89,6 +89,8 @@ namespace DataArchives.Data.Migrations
                     b.Property<string>("Head")
                         .IsRequired();
 
+                    b.Property<int>("Lvl");
+
                     b.Property<bool>("Public");
 
                     b.Property<int>("SectionParrentId");
@@ -137,6 +139,8 @@ namespace DataArchives.Data.Migrations
 
                     b.Property<string>("Head")
                         .IsRequired();
+
+                    b.Property<int>("Lvl");
 
                     b.Property<bool>("Public");
 

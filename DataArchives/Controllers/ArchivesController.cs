@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using DataArchives.Data;
 using DataArchives.Models.Domain;
+using DataArchives.Models.Search;
 using DataArchives.Models.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -23,14 +24,16 @@ namespace DataArchives.Controllers
             _userManager = usermanager;
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-           // this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ArchiveIndexV res = new ArchiveIndexV();
-            res.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            // this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ArchiveIndexV res = new ArchiveIndexV
+            {
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+            };
             if (res.UserId != null)
             {
-                ApplicationUser.GetMainSection(_db,res.UserId);
+                res.MySection = await ApplicationUser.GetMainSection(_db, res.UserId);
             }
             return View(res);
         }
@@ -39,19 +42,33 @@ namespace DataArchives.Controllers
        // [Authorize]
         public ActionResult OwnDatas()
         {
+            //test method+view
 
+            //System.Linq.IQueryable<DataArchives.Models.Domain.ApplicationUser> g = _db.Users;
             return View();
         }
 
-
-        public ActionResult Search()
+        
+        public async Task<ActionResult> Search(string str,string email,int type)
         {
-            return View();
+            SearchArchivesV res = new SearchArchivesV();
+            await SearchArchives.GetAll(str,email,type,_db,_userManager,res.Sections, res.Articles);
+            return PartialView(res);
         }
 
-        public ActionResult ForegnDatas()
+        public async Task<ActionResult> ForeignDatas(string email)
         {
-            return View();
+            Section res = null;
+            var user = await _userManager.FindByEmailAsync(email);
+            if(user==null)
+                return PartialView(res);
+            string curentUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+           
+            if (user?.Id==curentUserId)
+                return PartialView(res);
+            res = await user.GetMainSectionWithCheckAccess(_db, curentUserId);
+
+            return PartialView(res);
         }
 
     }

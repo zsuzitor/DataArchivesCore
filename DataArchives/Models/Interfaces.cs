@@ -1,4 +1,5 @@
-﻿using DataArchives.Models.Domain;
+﻿using DataArchives.Data;
+using DataArchives.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,22 @@ namespace DataArchives.Models
             //1-секция, 2-статья
         int GetTypeRecord();
     }
+
+
+    public interface ISearcherArhive
+    {
+        string Str { get; set; }
+        string UserId { get; set; }
+        //ApplicationDbContext _db { get; set; }
+        System.Linq.IQueryable<DataArchives.Models.Domain.Section> Sections { get; set; }
+        System.Linq.IQueryable<DataArchives.Models.Domain.Article> Articles { get; set; }
+
+        Task<List<Section>> SearchSections();
+        Task<List<Article>> SearchArticles();
+        Task SearchAll(List<Section> resultSection, List<Article> resultArticles);
+    }
+
+
 
 
     public abstract class AImage

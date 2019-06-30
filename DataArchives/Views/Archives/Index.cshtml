@@ -8,11 +8,11 @@
 
 
     <div class="tab-content">
-        <div class="tab-pane fade show active" id="OwnDatasBlock" role="tabpanel" aria-labelledby="OwnDatasBlock-tab">
+        <div class="tab-pane fade show active in" id="OwnDatasBlock" role="tabpanel" aria-labelledby="OwnDatasBlock-tab">
             @* вкладка с своими данными *@
             @if (Model.UserId != null)
             {
-                @await Html.PartialAsync("OneSection",Model.MySection)
+                @await Html.PartialAsync("OneSection", Model.MySection)
             }
             else
             {
@@ -20,23 +20,49 @@
             }
 
 
-
-
         </div>
+
+
         <div class="tab-pane fade show" id="SearchBlock" role="tabpanel" aria-labelledby="SearchBlock-tab">
-            <div class="spinner-border text-primary spinner-border-xl" role="status">
-                <span class="sr-only">Loading...</span>
+            <input type="text" id="searchStr" /> <button onclick="goSearch()">Поиск</button>
+            <input type="email" id="searchEmail" />
+            <div id="searchResultPreload" style="display:none;">
+                <div class="text-center">
+                    <div class="spinner-border text-primary square-100-100" role="status">
+                        <span class="sr-only">Загрузка...</span>
+                    </div>
+                </div>
             </div>
-            <div class="spinner-border text-primary" role="status">
-                <span class="sr-only">Загрузка...</span>
+            <div id="searchResult">
+
             </div>
+
         </div>
-        <div class="tab-pane fade show" id="ForegnDatasBlock" role="tabpanel" aria-labelledby="ForegnDatasBlock-tab">
-            <div class="spinner-border text-primary spinner-border-xl" role="status">
-                <span class="sr-only">Loading...</span>
+
+
+        <div class="tab-pane fade show" id="ForeignDatasBlock" role="tabpanel" aria-labelledby="ForeignDatasBlock-tab">
+
+            <input type="email" id="foreignEmail" /> <button onclick="getForeign()">Получить доступ</button>
+            <div id="ForeignResultPreload" style="display:none;">
+                <div class="text-center">
+                    <div class="spinner-border text-primary square-100-100" role="status">
+                        <span class="sr-only">Загрузка...</span>
+                    </div>
+                </div>
             </div>
+            <div id="ForeignResult">
+
+            </div>
+
+
         </div>
-      
+
 
     </div>
+
+
+
+@section Scripts{
+    <script src="~/js/archives.js"></script>
+}
 

@@ -30,7 +30,7 @@ function goAjaxRequest(obj) {
             beforeSend: function () {
                 if (obj.func_beforeSend)
                     obj.func_beforeSend();
-                PreloaderShowChange(true);
+              //  PreloaderShowChange(true);
             },
             // hides the loader after completion of request, whether successfull or failor.             
             complete: function (xhr, status, jqXHR) {
@@ -43,9 +43,7 @@ function goAjaxRequest(obj) {
                     }
                 }
 
-
-
-                PreloaderShowChange(false);
+                //PreloaderShowChange(false);
             },
             dataType: obj.dataType//'html'
         });

@@ -1,0 +1,31 @@
+﻿@model DataArchives.Models.ViewModel.SearchArchivesV
+
+
+@if (Model.Sections == null || Model.Articles == null)
+{
+    <h1>что то пошло не так, возможно плохая строка запроса</h1>
+}
+else
+{
+    if (Model.Sections.Count == 0 || Model.Articles.Count == 0)
+    {
+        <h1>Ничего не найдено, если поиск осуществлялся по чужому архиву, возможно доступ к нему закрыт</h1>
+    }
+    else
+    {
+        <div>
+            @foreach (var i in Model.Sections)
+            {
+                @await Html.PartialAsync("OneSection", i)
+            }
+        </div>
+        <div>
+            @foreach (var i in Model.Articles)
+            {
+                @await Html.PartialAsync("OneArticle", i)
+            }
+        </div>
+    }
+}
+
+

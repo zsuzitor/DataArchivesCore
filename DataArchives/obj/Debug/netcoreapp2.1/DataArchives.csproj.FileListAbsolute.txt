@@ -44,3 +44,5 @@ E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Partial\
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\Index.g.cshtml.cs
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\OwnDatas.g.cshtml.cs
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\Search.g.cshtml.cs
+E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\ForeignDatas.g.cshtml.cs
