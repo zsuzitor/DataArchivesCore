@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace DataArchives.Models.Domain
@@ -26,6 +27,10 @@ namespace DataArchives.Models.Domain
         }
 
 
+        //public string GetId()
+        //{
+        //    return User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+        //}
 
         public static async Task<Section> GetMainSection(ApplicationDbContext db, string userId)
         {

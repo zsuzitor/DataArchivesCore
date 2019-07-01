@@ -51,6 +51,15 @@ namespace DataArchives.Models.Domain
             SectionParrentId = 0;
         }
 
-        public int GetTypeRecord() => 2;
+        public Article(string head,string userId, int lvl, int sectionParrentId) :this()
+        {
+            Head = head;
+            UserId = userId;
+            SectionParrentId = sectionParrentId;
+            Lvl = lvl;
+        }
+
+
+            public int GetTypeRecord() => 2;
     }
 }

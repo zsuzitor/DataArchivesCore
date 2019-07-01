@@ -75,7 +75,9 @@ namespace DataArchives.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    await _db.Sections.AddAsync(new Section(user.Id));
+                    //await _db.Sections.AddAsync(new Section(user.Id));
+                    //await _db.SaveChangesAsync();
+                    await Section.AddMainSection(_db,user.Id);
 
                         _logger.LogInformation("User created a new account with password.");
 

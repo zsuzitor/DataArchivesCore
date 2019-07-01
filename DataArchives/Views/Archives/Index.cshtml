@@ -1,5 +1,5 @@
 ﻿@model DataArchives.Models.ViewModel.ArchiveIndexV
-
+@using DataArchives.Models.ViewModel
 @{
     ViewData["Title"] = "Index";
     //Layout = "~/Areas/Identity/Pages/Account/Login.cshtml";
@@ -12,7 +12,8 @@
             @* вкладка с своими данными *@
             @if (Model.UserId != null)
             {
-                @await Html.PartialAsync("OneSection", Model.MySection)
+                
+                @await Html.PartialAsync("/Views/Partial/OneSection.cshtml",new OneSectionV() {Section= Model.MySection,UserId=Model.UserId })
             }
             else
             {
