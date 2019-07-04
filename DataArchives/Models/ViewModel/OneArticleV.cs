@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 namespace DataArchives.Models.ViewModel
 {
-    public class OneSectionV
+    public class OneArticleV
     {
-        public Section Section { get; set; }
+        public Article Article { get; set; }
         public string UserId { get; set; }
 
-        public OneSectionV()
+        public OneArticleV()
         {
             UserId = null;
-            Section = null;
+            Article = null;
         }
-        public OneSectionV(Section section, string userId)
+        public OneArticleV(Article article,string userId)
         {
-            Section = section;
+            Article = article;
             UserId = userId;
         }
+
     }
 }

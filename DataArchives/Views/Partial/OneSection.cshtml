@@ -1,87 +1,92 @@
 ﻿@model DataArchives.Models.ViewModel.OneSectionV
 @using DataArchives.Models.ViewModel
 
-@{
-    string hideChilds = "style=\"display:none;\"";
-    if (Model.Section.Sections.Count > 0)
-    {
-        hideChilds = "";
-    }
-}
 
-<div class="rounded border border-primary" id="OneSectionFull_@Model.Section.Id">
-    <div class="row no-gutters">
-        <div onclick="clickForChilds('@Model.Section.Id')" class="col-2 bg-info">
-            @* кнопка для того что бы разворачивать секции *@
-            <input id="checkboxOpend_@Model.Section.Id" type="checkbox" style="display:none;">
-            @Model.Section.Lvl
+@if (Model.Section != null)
+{
 
-
-        </div>
-       
-        <div class="col-10">
-            @*заголовок секции, при нажатии открывается alert с содержимым*@
-            <div id="oneSectionHead_@Model.Section.Id" class="text-break">
-                <label id="oneSectionHeadLabel_@Model.Section.Id">@Model.Section.Head</label>
-                
-            </div>
-        </div>
-       
-
-    </div>
-    @if (Model.UserId == Model.Section.UserId)
-    {
-
-
-        <div class="">
-            <div id="actionsSectionButton_@Model.Section.Id" onclick="actionsSection('@Model.Section.Id')" class="text-center btn btn-default btn-sm btn-block border-top">
-                <small class="text-muted">Показать действия</small>
-            </div>
-            <div id="sectionActions_@Model.Section.Id" class="one-section-actions" style="height:0;">
-               
-                <div class="row"> @* этот кусок также есть в archives.js, если будут изменения перенести также туда *@
-
-                    <div class="col-6">
-                        <button onclick="addSection('@Model.Section.Id')" class="btn-block btn btn-secondary">Добавить секцию</button>
-
-                    </div>
-                    <div class="col-6">
-                        <button onclick="addArticle('@Model.Section.Id')" class="btn-block btn btn-secondary">Добавить статью</button>
-                    </div>
-                </div>
-                <div class="p-1"></div>
-                <div class="row">
-
-                    <div class="col-6">
-                        <button onclick="changeSection('@Model.Section.Id')" class="btn-block btn btn-secondary">Изменить секцию</button>
-
-                    </div>
-                    <div class="col-6">
-                        <button onclick="deleteSection('@Model.Section.Id')" class="btn-block btn btn-secondary">Удалить секцию</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    }
-
-    <div id="OneSectionChilds_@Model.Section.Id" @hideChilds>
-        @if (Model.Section.Sections.Count > 0 && Model.Section.Articles.Count > 0)
+        string hideChilds = "style=\"display:none;\"";
+        if (Model.Section.Sections.Count > 0)
         {
-            <div id="OneSectionChildsSections_@Model.Section.Id">
-                @foreach (var i in Model.Section.Sections)
-                {
-                    @await Html.PartialAsync("/Views/Partial/OneSection.cshtml", new OneSectionV() { Section = i, UserId = Model.UserId })
-                }
+            hideChilds = "";
+        }
+   
+
+    <div class="rounded border border-primary" id="OneSectionFull_@Model.Section.Id">
+        <div class="row no-gutters">
+            <div onclick="clickForChilds('@Model.Section.Id')" class="col-2 bg-info" id="buttonShowChildsSection_@Model.Section.Id">
+                @* кнопка для того что бы разворачивать секции *@
+                <input id="checkboxOpend_@Model.Section.Id" type="checkbox" style="display:none;">
+                @Model.Section.Lvl
+
+
             </div>
-            <div id="OneSectionChildsArticles_@Model.Section.Id">
-                @foreach (var i in Model.Section.Articles)
-                {
-                    @await Html.PartialAsync("/Views/Partial/OneArticle.cshtml", i)
-                }
+
+            <div class="col-10">
+                @*заголовок секции*@
+                <div id="oneSectionHead_@Model.Section.Id" class="text-break">
+                    <label id="oneSectionHeadLabel_@Model.Section.Id">@Model.Section.Head</label>
+
+                </div>
+            </div>
+
+
+        </div>
+        @if (Model.UserId == Model.Section.UserId)
+        {
+            <div class="">
+                <div id="actionsSectionButton_@Model.Section.Id" onclick="actionsSection('@Model.Section.Id')" class="text-center btn btn-default btn-sm btn-block border-top">
+                    <small class="text-muted">Показать действия</small>
+                </div>
+                <div id="sectionActions_@Model.Section.Id" class="one-section-actions" style="height:0;">
+
+                    @* этот кусок также есть в archives.js, если будут изменения перенести также туда *@
+                    @*<div class="row">
+
+
+                        <div class="col-6">
+                            <button onclick="addSection('@Model.Section.Id')" class="btn-block btn btn-secondary">Добавить секцию</button>
+
+                        </div>
+                        <div class="col-6">
+                            <button onclick="addArticle('@Model.Section.Id')" class="btn-block btn btn-secondary">Добавить статью</button>
+                        </div>
+                    </div>
+                    <div class="p-1"></div>
+                    <div class="row">
+
+                        <div class="col-6">
+                            <button onclick="changeSection('@Model.Section.Id')" class="btn-block btn btn-secondary">Изменить секцию</button>
+
+                        </div>
+                        <div class="col-6">
+                            <button onclick="deleteSection('@Model.Section.Id')" class="btn-block btn btn-secondary">Удалить секцию</button>
+                        </div>
+                    </div>*@
+
+                </div>
             </div>
         }
 
+        <div id="OneSectionChilds_@Model.Section.Id" @hideChilds>
+            @if (Model.Section.Sections.Count > 0 && Model.Section.Articles.Count > 0)
+            {
+                <div id="OneSectionChildsSections_@Model.Section.Id">
+                    @foreach (var i in Model.Section.Sections)
+                    {
+                        @await Html.PartialAsync("/Views/Partial/OneSection.cshtml", new OneSectionV(i,Model.UserId))
+                    }
+                </div>
+                <div id="OneSectionChildsArticles_@Model.Section.Id">
+                    @foreach (var i in Model.Section.Articles)
+                    {
+                        @await Html.PartialAsync("/Views/Partial/OneArticle.cshtml", new OneArticleV(i,Model.UserId))
+                    }
+                </div>
+            }
+
+        </div>
     </div>
-</div>
+}
+
 

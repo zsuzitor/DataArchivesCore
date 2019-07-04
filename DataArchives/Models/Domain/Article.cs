@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataArchives.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataArchives.Models.Domain
 {
-    public class Article:IArchivesData
+    public class Article : IArchivesData
     {
         [Key]
         [HiddenInput(DisplayValue = false)]
@@ -49,9 +51,11 @@ namespace DataArchives.Models.Domain
             Lvl = 1;
             UserId = null;
             SectionParrentId = 0;
+
+            Images = new List<ImageDataArchives>();
         }
 
-        public Article(string head,string userId, int lvl, int sectionParrentId) :this()
+        public Article(string head, string userId, int lvl, int sectionParrentId) : this()
         {
             Head = head;
             UserId = userId;
@@ -60,6 +64,48 @@ namespace DataArchives.Models.Domain
         }
 
 
-            public int GetTypeRecord() => 2;
+        public int GetTypeRecord() => 2;
+
+
+
+        //проверяется доступ для просмотра
+        public async static Task<Article> GetIfHaveAccess(ApplicationDbContext db, string userId, int? articleId)
+        {
+            if (articleId == null)
+                return null;
+            return await db.Articles.Where(x1 => x1.Id == articleId && (x1.UserId == userId || x1.Public)).FirstOrDefaultAsync();
+        }
+        //получение без проверок
+        public async static Task<Article> Get(ApplicationDbContext db, int? articleId)
+        {
+            if (articleId == null)
+                return null;
+            return await db.Articles.Where(x1 => x1.Id == articleId).FirstOrDefaultAsync();
+        }
+
+
+        //есть проверки, редактирование в бд
+        public async Task<bool> TryEditSimpleInDb(ApplicationDbContext db, string head, string userId)
+        {
+            if (this.UserId != null && this.UserId == userId && !string.IsNullOrWhiteSpace(head))
+            {
+                this.Head = head;
+
+                await db.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> TryDeleteSection(ApplicationDbContext db, string userId)
+        {
+            if (this.UserId != userId)
+                return false;
+            //возможно надо загружать изображения
+            db.Articles.Remove(this);
+            await db.SaveChangesAsync();
+            return true;
+        }
+
     }
 }

@@ -1,0 +1,99 @@
+﻿@model DataArchives.Models.ViewModel.ArticleRecordV
+
+@{
+    ViewData["Title"] = "ArticleRecord";
+
+}
+
+
+@*@if (Model.UserId == Model.Article.UserId)
+{
+    <a asp-controller="Archives" asp-action=""></a>
+}*@
+
+
+@* 
+    Weight
+    Public
+    Head
+    Body
+изображения Images
+*@
+
+    <div>
+        <input type="hidden" value="@Model.Article.Id"/>
+        @if (Model.Editable)
+        {
+            <div class="row">
+                <div class="col-6">
+
+                    <input type="number" id="editWeight" value="@Model.Article.Weight" />
+                </div>
+                <div class="col-6">
+                    @if (Model.Article.Public)
+                    {
+                        <input type="checkbox" id="editPublic" checked />
+                    }
+                    else
+                    {
+                        <input type="checkbox" id="editPublic" />
+                    }
+                </div>
+            </div>
+        }
+
+        @if (Model.Editable)
+        {
+            <div>
+                <input type="text" value="@Model.Article.Head" />
+            </div>
+            <div>
+                <input type="text" value="@Model.Article.Body" />
+
+            </div>
+        }
+        else
+        {
+            <div><pre>@Model.Article.Head</pre></div>
+            <div>
+
+                <pre>@Model.Article.Body</pre>
+            </div>
+        }
+        @if (Model.Editable)
+        {
+            <div>
+                <input type="file" multiple/>
+                @*<button>Добавить изображения</button>*@
+            </div>
+        }
+        <div class="row">
+
+            @foreach (var i in Model.Article.Images)
+            {
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div id="divOutOneImage_@i.Id">
+                        @*<div id="divOneImageBack_@i.Id" class="class_image_standart" style="background:url( data:image/jpeg;base64,@Convert.ToBase64String(i.Data)) no-repeat">
+        </div>*@
+                        <img id="OneImage_@i.Id" src="data:image;base64,@System.Convert.ToBase64String(i.Data)"  class="img-fluid" />
+                    </div>
+                    @if (Model.Editable)
+                    {
+                        <div>
+                            <button onclick="deleteImage(@i.Id)">Удалить</button>
+                        </div>
+                    }
+                </div>
+            }
+
+        </div>
+        @if (Model.Editable)
+        {
+            <button>Сохранить</button>
+        }
+    </div>
+
+
+
+
+

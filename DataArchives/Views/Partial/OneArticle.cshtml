@@ -1,15 +1,36 @@
-﻿@model DataArchives.Models.Domain.Article
+﻿@model DataArchives.Models.ViewModel.OneArticleV
 
 
-    <div class="row rounded border border-success" id="OneArticleFull_@Model.Id">
-        <div onclick="" class="col-2">@Model.Lvl</div>
-        @* кнопка для того что бы разворачивать секции *@
-        <div class="col-9">
-            @*заголовок секции, при нажатии открывается alert с содержимым*@
+    <div class="rounded border border-warning" id="OneArticleFull_@Model.Article.Id">
+        <div class="row no-gutters">
+            <div onclick="OpenArticlePage(@Model.Article.Id)" class="col-2 bg-warning">
+                @* <a asp-controller="Archives" asp-action="ArticleRecord" asp-route-id="@Model.Article.Id"></a>*@
+                @Model.Article.Lvl
+               
+            </div>
+
+            <div class="col-10">
+                @*заголовок статьи, при нажатии открывается alert с содержимым*@
+                <div id="oneArticleHead_@Model.Article.Id" class="text-break">
+                    <label id="oneArticleHeadLabel_@Model.Article.Id">@Model.Article.Head</label>
+                </div>
+            </div>
         </div>
-        <div class="col-1">
-            @*кнопка которая будет вытаскивать остальные кнопки*@
-        </div>
+        @if (Model.UserId == Model.Article.UserId)
+        {
+            <div class="">
+                <div id="actionsArticleButton_@Model.Article.Id" onclick="actionsArticle('@Model.Article.Id')" class="text-center btn btn-default btn-sm btn-block border-top">
+                    <small class="text-muted">Показать действия</small>
+                </div>
+                <div id="articleActions_@Model.Article.Id" class="one-article-actions" style="height:0;">
+
+                </div>
+            </div>
+        }
+
+
+
+
 
     </div>
 

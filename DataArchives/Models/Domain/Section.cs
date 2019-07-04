@@ -74,7 +74,7 @@ namespace DataArchives.Models.Domain
         public async Task<Section> TryAddSectionToChilds(ApplicationDbContext db,string head,string userId,  int? sectionParrentId)
         {
 
-            if (this.UserId == userId&&!string.IsNullOrWhiteSpace(this.Head))
+            if (this.UserId == userId&&!string.IsNullOrWhiteSpace(head))
             {
                 Section res = new Section(head, userId, this.Lvl + 1, sectionParrentId);
                 db.Sections.Add(res);
@@ -114,7 +114,6 @@ namespace DataArchives.Models.Domain
         //есть проверки, редактирование в бд
         public async Task<bool> TryEditInDb(ApplicationDbContext db, int weight, bool public_, string head, string userId)
         {
-            
             if (this.UserId!=null&&this.UserId == userId && !string.IsNullOrWhiteSpace(head))
             {
                 this.Weight = weight;
@@ -124,8 +123,6 @@ namespace DataArchives.Models.Domain
                 await db.SaveChangesAsync();
                 return true;
             }
-            
-            
             return false;
         }
 

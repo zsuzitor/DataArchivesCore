@@ -47,3 +47,6 @@ E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\UserSecretsAssemblyI
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\Search.g.cshtml.cs
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\ForeignDatas.g.cshtml.cs
 E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\GetSectionChilds.g.cshtml.cs
+E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\CreateSection.g.cshtml.cs
+E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\CreateArticle.g.cshtml.cs
+E:\csharp\DataArchives\DataArchives\obj\Debug\netcoreapp2.1\Razor\Views\Archives\ArticleRecord.g.cshtml.cs

@@ -1,15 +1,15 @@
-﻿@model DataArchives.Models.Domain.Section
+﻿@model DataArchives.Models.ViewModel.OneSectionV
+@using DataArchives.Models.ViewModel
 
-
-<div id="OneSectionChildsSections_@Model.Id">
-    @foreach (var i in Model.Sections)
+<div id="OneSectionChildsSections_@Model.Section.Id">
+    @foreach (var i in Model.Section.Sections)
     {
-        @await Html.PartialAsync("/Views/Partial/OneSection.cshtml", i)
+        @await Html.PartialAsync("/Views/Partial/OneSection.cshtml", new DataArchives.Models.ViewModel.OneSectionV(i,Model.UserId))
     }
 </div>
-<div id="OneSectionChildsArticles_@Model.Id">
-    @foreach (var i in Model.Articles)
+<div id="OneSectionChildsArticles_@Model.Section.Id">
+    @foreach (var i in Model.Section.Articles)
     {
-        @await Html.PartialAsync("/Views/Partial/OneArticle.cshtml", i)
+        @await Html.PartialAsync("/Views/Partial/OneArticle.cshtml", new OneArticleV(i,Model.UserId))
     }
 </div>

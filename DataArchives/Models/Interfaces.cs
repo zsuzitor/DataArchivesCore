@@ -25,7 +25,8 @@ namespace DataArchives.Models
 
             //1-секция, 2-статья
         int GetTypeRecord();
-    }
+
+        }
 
 
     public interface ISearcherArhive
